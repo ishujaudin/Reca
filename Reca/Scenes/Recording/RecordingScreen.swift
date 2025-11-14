@@ -553,7 +553,7 @@ private extension RecordingScreen {
 
     var recordingTimer: some View {
         Text(formatTime(viewModel.recordingDuration))
-            .font(RAFont.medium.with(FontSize.tinyText))
+            .font(RAFont.sfProMedium.with(FontSize.tinyText))
             .foregroundColor(.white)
             .frame(width: 54, height: 32)
             .background(Constant.Colors.buttonsOpacity)

@@ -78,6 +78,7 @@ struct RecordingCompleteView: View {
             }
             .padding(.vertical, Global.Margin.xlarge)
         }
+        .padding(.bottom, 60)
     }
 
     // MARK: - Landscape Left Layout
@@ -147,12 +148,11 @@ struct RecordingCompleteView: View {
 
     private var durationBadge: some View {
         Text(formatTime(duration))
-            .font(RAFont.medium.with(FontSize.body))
+            .font(RAFont.sfProMedium.with(FontSize.tinyText))
             .foregroundColor(.white)
-            .padding(.horizontal, Global.Margin.medium)
-            .padding(.vertical, Global.Margin.small)
+            .frame(width: 54, height: 32)
             .background(Color.black.opacity(Global.Opacity.medium))
-            .cornerRadius(Global.CornerRadius.mid)
+            .cornerRadius(Global.CornerRadius.high)
     }
 
     private var deleteButton: some View {
@@ -166,8 +166,8 @@ struct RecordingCompleteView: View {
     private var shareButton: some View {
         Button(action: handleShare) {
             Image(.icUpload)
-                .frame(width: 70, height: 70)
-                .background(Circle().fill(Color(hex: "C026D3")))
+                .frame(width: 60, height: 60)
+                .background(Circle().fill(Color(hex: "CC00A7")))
         }
     }
 

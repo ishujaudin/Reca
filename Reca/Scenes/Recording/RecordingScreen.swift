@@ -14,7 +14,7 @@ extension RecordingScreen {
     enum Constant {
         enum Size {
             static let controlButtonSize: CGFloat = 44
-            static let srttingsAndZoomButtonSize: CGFloat = 32
+            static let srttingsAndZoomButtonSize: CGFloat = 40
             static let recordButtonSize: CGFloat = 80
             static let zoomButtonSize: CGFloat = 28.0
             static let topPadding: CGFloat = Global.Margin.medium
@@ -23,7 +23,7 @@ extension RecordingScreen {
             static let controlSpacing: CGFloat = Global.Margin.medium
             static let liveButtonSize: CGFloat = 50.0
 
-            static let srttingsAndZoomButtonCornerRadius: CGFloat = 16.0
+            static let srttingsAndZoomButtonCornerRadius: CGFloat = 20
             static let sideControlsWidth: CGFloat = 100
         }
 
@@ -285,7 +285,7 @@ private extension RecordingScreen {
         HStack(spacing: viewModel.isOneHandedMode ? Constant.Size.controlSpacing : 0) {
             // First column: Lens+Record+Settings
             if !viewModel.isRecording {
-                VStack(spacing: Global.Margin.small) {
+                VStack(spacing: Global.Margin.medium) {
                     lensButton
                     recordButton
                     settingsButton
@@ -299,7 +299,7 @@ private extension RecordingScreen {
             }
 
             // Second column: Zoom buttons
-            VStack(spacing: Global.Margin.small) {
+            VStack(spacing: Global.Margin.small * 2) {
                 zoomButton(zoom: 5.0)
                 zoomButton(zoom: 2.0)
                 zoomButton(zoom: 1.0)
@@ -414,7 +414,7 @@ private extension RecordingScreen {
     var landscapeRightBottomControls: some View {
         HStack(spacing: viewModel.isOneHandedMode ? Constant.Size.controlSpacing : 0) {
             // First column: Zoom buttons
-            VStack(spacing: Global.Margin.small) {
+            VStack(spacing: Global.Margin.small * 2) {
                 zoomButton(zoom: 5.0)
                 zoomButton(zoom: 2.0)
                 zoomButton(zoom: 1.0)
@@ -426,7 +426,7 @@ private extension RecordingScreen {
 
             // Second column: Lens+Record+Settings
             if !viewModel.isRecording {
-                VStack(spacing: Global.Margin.small) {
+                VStack(spacing: Global.Margin.medium) {
                     lensButton
                     recordButton
                     settingsButton
@@ -531,8 +531,8 @@ private extension RecordingScreen {
 
     var ss2BadgeOnly: some View {
         Text("SS2")
-            .font(RAFont.medium.with(FontSize.tinyText))
-            .foregroundColor(Global.theme.tertiaryTextColor.color)
+            .font(RAFont.kuunariBold.with(FontSize.title4))
+            .foregroundColor(Color(hex: "FF8DDF"))
             .frame(width: Constant.Size.controlButtonSize, height: Constant.Size.controlButtonSize)
             .background(Constant.Colors.buttonsOpacity)
             .clipShape(Circle())
@@ -708,6 +708,7 @@ private extension RecordingScreen {
             .padding(.horizontal, viewModel.orientation.isPortrait ? Global.Margin.medium : Global.Margin.small)
             .background(Constant.Colors.liveColor)
             .cornerRadius(Global.CornerRadius.extraHigh)
+            .rotationEffect(viewModel.orientation.isPortrait ? .degrees(0) : .degrees(-90))
         }
     }
 

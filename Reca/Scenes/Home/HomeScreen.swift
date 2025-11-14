@@ -90,7 +90,7 @@ private extension HomeScreen {
 
     var instructionalText: some View {
         Text(Constant.instructionalText)
-            .font(RAFont.regular.with(FontSize.subtitle))
+            .font(RAFont.sfProRegular.with(FontSize.subtitle))
             .foregroundColor(.white)
             .multilineTextAlignment(.center)
     }

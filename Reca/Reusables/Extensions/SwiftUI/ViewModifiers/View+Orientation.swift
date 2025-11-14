@@ -23,11 +23,18 @@ private struct DeviceRotationViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppear {
-                // Set initial orientation
-                action(UIDevice.current.orientation)
+                // Set initial orientation only if valid
+                let orientation = UIDevice.current.orientation
+                if orientation.isValidInterfaceOrientation {
+                    action(orientation)
+                }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-                action(UIDevice.current.orientation)
+                let orientation = UIDevice.current.orientation
+                // Only trigger action for valid orientations (ignore faceUp, faceDown, unknown)
+                if orientation.isValidInterfaceOrientation {
+                    action(orientation)
+                }
             }
     }
 }
@@ -38,9 +45,10 @@ private extension UIDeviceOrientation {
 
     var isValidInterfaceOrientation: Bool {
         switch self {
-        case .portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight:
+        case .portrait, .landscapeLeft, .landscapeRight:
             return true
         default:
+            // Filter out: .portraitUpsideDown, .faceUp, .faceDown, .unknown
             return false
         }
     }

@@ -17,7 +17,7 @@ private extension RecordButton {
             static let height: CGFloat = 44
             static let cornerRadius: CGFloat = Global.CornerRadius.mediumHigh
             static let iconSize: CGFloat = 24
-            static let spacing: CGFloat = Global.Margin.small
+            static let spacing: CGFloat = 6
         }
         
         enum Color {
@@ -40,7 +40,7 @@ struct RecordButton: View {
             HStack(spacing: Constant.Size.spacing) {
                 recordIcon
                 Text(Constant.title)
-                    .font(RAFont.semiBold.with(FontSize.button))
+                    .font(RAFont.kuunariBold.with(FontSize.body))
                     .foregroundColor(Constant.Color.text)
             }
             .frame(maxWidth: .infinity)
@@ -52,7 +52,7 @@ struct RecordButton: View {
     }
     
     private var recordIcon: some View {
-        Image(.icCamera)
+        Image(.icVideo)
             .frame(width: Constant.Size.iconSize, height: Constant.Size.iconSize)
     }
 }

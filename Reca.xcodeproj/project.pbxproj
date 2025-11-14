@@ -119,6 +119,16 @@
 		AD69043B2E3BE45B008C90B7 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD6902802E3BE45B008C90B7 /* PlusJakartaSans-Medium.ttf */; };
 		C9B43F3544B6D35EBB8B3FAC /* RecordingCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BB644AB2610E788D051E8 /* RecordingCompleteView.swift */; };
 		DC24C5C22E5EB77600FC5D3D /* MUSLIM_PRAYER_SCN.scn in Resources */ = {isa = PBXBuildFile; fileRef = DC24C5C12E5EB77600FC5D3D /* MUSLIM_PRAYER_SCN.scn */; };
+		DCD003042EC7328200311C9C /* kuunari-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DCD003032EC7328200311C9C /* kuunari-bold.otf */; };
+		DCD003102EC734E000311C9C /* SFPRODISPLAYMEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD0030B2EC734E000311C9C /* SFPRODISPLAYMEDIUM.OTF */; };
+		DCD003112EC734E000311C9C /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD0030C2EC734E000311C9C /* SFPRODISPLAYREGULAR.OTF */; };
+		DCD003122EC734E000311C9C /* SFPRODISPLAYTHINITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD0030E2EC734E000311C9C /* SFPRODISPLAYTHINITALIC.OTF */; };
+		DCD003132EC734E000311C9C /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD003082EC734E000311C9C /* SFPRODISPLAYBOLD.OTF */; };
+		DCD003142EC734E000311C9C /* SFPRODISPLAYBLACKITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD003072EC734E000311C9C /* SFPRODISPLAYBLACKITALIC.OTF */; };
+		DCD003152EC734E000311C9C /* SFPRODISPLAYLIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD0030A2EC734E000311C9C /* SFPRODISPLAYLIGHTITALIC.OTF */; };
+		DCD003162EC734E000311C9C /* SFPRODISPLAYHEAVYITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD003092EC734E000311C9C /* SFPRODISPLAYHEAVYITALIC.OTF */; };
+		DCD003172EC734E000311C9C /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD0030D2EC734E000311C9C /* SFPRODISPLAYSEMIBOLDITALIC.OTF */; };
+		DCD003182EC734E000311C9C /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DCD0030F2EC734E000311C9C /* SFPRODISPLAYULTRALIGHTITALIC.OTF */; };
 		DCD72D542E63A4CB001ED295 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD72D532E63A4CB001ED295 /* Gradients.swift */; };
 /* End PBXBuildFile section */
 
@@ -236,6 +246,16 @@
 		AD6903762E3BE45B008C90B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB8BB644AB2610E788D051E8 /* RecordingCompleteView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecordingCompleteView.swift; sourceTree = "<group>"; };
 		DC24C5C12E5EB77600FC5D3D /* MUSLIM_PRAYER_SCN.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = MUSLIM_PRAYER_SCN.scn; sourceTree = "<group>"; };
+		DCD003032EC7328200311C9C /* kuunari-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kuunari-bold.otf"; sourceTree = "<group>"; };
+		DCD003072EC734E000311C9C /* SFPRODISPLAYBLACKITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBLACKITALIC.OTF; sourceTree = "<group>"; };
+		DCD003082EC734E000311C9C /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
+		DCD003092EC734E000311C9C /* SFPRODISPLAYHEAVYITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYHEAVYITALIC.OTF; sourceTree = "<group>"; };
+		DCD0030A2EC734E000311C9C /* SFPRODISPLAYLIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYLIGHTITALIC.OTF; sourceTree = "<group>"; };
+		DCD0030B2EC734E000311C9C /* SFPRODISPLAYMEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.OTF; sourceTree = "<group>"; };
+		DCD0030C2EC734E000311C9C /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
+		DCD0030D2EC734E000311C9C /* SFPRODISPLAYSEMIBOLDITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYSEMIBOLDITALIC.OTF; sourceTree = "<group>"; };
+		DCD0030E2EC734E000311C9C /* SFPRODISPLAYTHINITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYTHINITALIC.OTF; sourceTree = "<group>"; };
+		DCD0030F2EC734E000311C9C /* SFPRODISPLAYULTRALIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYULTRALIGHTITALIC.OTF; sourceTree = "<group>"; };
 		DCD72D532E63A4CB001ED295 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -343,6 +363,16 @@
 		AD6902852E3BE45B008C90B7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				DCD003072EC734E000311C9C /* SFPRODISPLAYBLACKITALIC.OTF */,
+				DCD003082EC734E000311C9C /* SFPRODISPLAYBOLD.OTF */,
+				DCD003092EC734E000311C9C /* SFPRODISPLAYHEAVYITALIC.OTF */,
+				DCD0030A2EC734E000311C9C /* SFPRODISPLAYLIGHTITALIC.OTF */,
+				DCD0030B2EC734E000311C9C /* SFPRODISPLAYMEDIUM.OTF */,
+				DCD0030C2EC734E000311C9C /* SFPRODISPLAYREGULAR.OTF */,
+				DCD0030D2EC734E000311C9C /* SFPRODISPLAYSEMIBOLDITALIC.OTF */,
+				DCD0030E2EC734E000311C9C /* SFPRODISPLAYTHINITALIC.OTF */,
+				DCD0030F2EC734E000311C9C /* SFPRODISPLAYULTRALIGHTITALIC.OTF */,
+				DCD003032EC7328200311C9C /* kuunari-bold.otf */,
 				AD6902772E3BE45B008C90B7 /* PlusJakartaSans-Bold.ttf */,
 				AD6902782E3BE45B008C90B7 /* PlusJakartaSans-BoldItalic.ttf */,
 				AD6902792E3BE45B008C90B7 /* PlusJakartaSans-ExtraBold.ttf */,
@@ -719,6 +749,15 @@
 			files = (
 				AD69042A2E3BE45B008C90B7 /* PlusJakartaSans-LightItalic.ttf in Resources */,
 				AD69042B2E3BE45B008C90B7 /* PlusJakartaSans-Italic.ttf in Resources */,
+				DCD003102EC734E000311C9C /* SFPRODISPLAYMEDIUM.OTF in Resources */,
+				DCD003112EC734E000311C9C /* SFPRODISPLAYREGULAR.OTF in Resources */,
+				DCD003122EC734E000311C9C /* SFPRODISPLAYTHINITALIC.OTF in Resources */,
+				DCD003132EC734E000311C9C /* SFPRODISPLAYBOLD.OTF in Resources */,
+				DCD003142EC734E000311C9C /* SFPRODISPLAYBLACKITALIC.OTF in Resources */,
+				DCD003152EC734E000311C9C /* SFPRODISPLAYLIGHTITALIC.OTF in Resources */,
+				DCD003162EC734E000311C9C /* SFPRODISPLAYHEAVYITALIC.OTF in Resources */,
+				DCD003172EC734E000311C9C /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */,
+				DCD003182EC734E000311C9C /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */,
 				AD69042C2E3BE45B008C90B7 /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				AD69042D2E3BE45B008C90B7 /* PlusJakartaSans-Light.ttf in Resources */,
 				AD69042E2E3BE45B008C90B7 /* PlusJakartaSans-ExtraLightItalic.ttf in Resources */,
@@ -726,6 +765,7 @@
 				AD6904312E3BE45B008C90B7 /* PlusJakartaSans-Regular.ttf in Resources */,
 				DC24C5C22E5EB77600FC5D3D /* MUSLIM_PRAYER_SCN.scn in Resources */,
 				AD6904322E3BE45B008C90B7 /* PlusJakartaSans-SemiBold.ttf in Resources */,
+				DCD003042EC7328200311C9C /* kuunari-bold.otf in Resources */,
 				AD6904332E3BE45B008C90B7 /* PlusJakartaSans-ExtraBoldItalic.ttf in Resources */,
 				AD6904342E3BE45B008C90B7 /* PlusJakartaSans-ExtraBold.ttf in Resources */,
 				AD6904352E3BE45B008C90B7 /* PlusJakartaSans-Bold.ttf in Resources */,
@@ -979,9 +1019,11 @@
 				INFOPLIST_FILE = Reca/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Reca;
 				INFOPLIST_KEY_NFCReaderUsageDescription = "This app uses NFC to scan passports";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to read passports";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Reca needs access to your camera to record videos.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to authenticate you to access the app securely.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Reca needs access to your location to provide accurate prayer times and qibla direction for your current location.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Reca needs access to your microphone to record audio with videos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Reca needs access to save videos to your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -1026,9 +1068,11 @@
 				INFOPLIST_FILE = Reca/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Reca;
 				INFOPLIST_KEY_NFCReaderUsageDescription = "This app uses NFC to scan passports";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to read passports";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Reca needs access to your camera to record videos.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to authenticate you to access the app securely.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Reca needs access to your location to provide accurate prayer times and qibla direction for your current location.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Reca needs access to your microphone to record audio with videos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Reca needs access to save videos to your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;

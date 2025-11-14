@@ -35,7 +35,7 @@ struct UploadersBadge: View {
 
     private var mainContent: some View {
         Text("\(count) uploaders")
-            .font(RAFont.medium.with(FontSize.footnote))
+            .font(RAFont.sfProBold.with(FontSize.smallBody))
             .foregroundColor(Constant.Color.text)
             .frame(height: Constant.Size.height)
             .padding(.horizontal, Constant.Size.horizontalPadding)

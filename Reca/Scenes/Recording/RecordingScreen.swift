@@ -13,17 +13,17 @@ import AVFoundation
 extension RecordingScreen {
     enum Constant {
         enum Size {
-            static let controlButtonSize: CGFloat = Global.Height.xxlarge
-            static let srttingsAndZoomButtonSize: CGFloat = Global.Height.xlarge
+            static let controlButtonSize: CGFloat = 44
+            static let srttingsAndZoomButtonSize: CGFloat = 32
             static let recordButtonSize: CGFloat = 80
             static let zoomButtonSize: CGFloat = 28.0
             static let topPadding: CGFloat = Global.Margin.medium
             static let bottomPadding: CGFloat = Global.Margin.large
             static let horizontalPadding: CGFloat = Global.Margin.medium
             static let controlSpacing: CGFloat = Global.Margin.medium
-            static let liveButtonSize: CGFloat = 60.0
+            static let liveButtonSize: CGFloat = 50.0
 
-            static let srttingsAndZoomButtonCornerRadius: CGFloat = 15.0
+            static let srttingsAndZoomButtonCornerRadius: CGFloat = 16.0
             static let sideControlsWidth: CGFloat = 100
         }
 
@@ -49,6 +49,9 @@ struct RecordingScreen: View {
                 shouldPresentFullscreen: $viewModel.shouldPresentFullscreen
             )
             .onRotate { newOrientation in
+                // Don't change orientation while recording
+                guard !viewModel.isRecording else { return }
+
                 // Update orientation asynchronously to avoid blocking UI
                 Task { @MainActor in
                     viewModel.orientation = newOrientation
@@ -129,6 +132,9 @@ private extension RecordingScreen {
             // Save and upload controls at bottom
             if !viewModel.isRecording {
                 portraitSaveAndUploadControls
+            } else {
+                Color.clear
+                    .frame(height: 60)
             }
         }
     }
@@ -495,9 +501,16 @@ private extension RecordingScreen {
         Button(action: viewModel.didTapUpload) {
             Image(.icUpload)
                 .frame(width: Constant.Size.controlButtonSize, height: Constant.Size.controlButtonSize)
-                .background(Circle().fill(Constant.Colors.buttonsOpacity).stroke(Color.yellow, lineWidth: 1))
+                .background(
+                    Circle()
+                        .fill(Constant.Colors.buttonsOpacity)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.yellow, lineWidth: viewModel.pendingUploads > 0 ? 1 : 0)
+                        )
+                )
                 .overlay(alignment: .topTrailing) {
-                    if viewModel.pendingUploads > 0 { uplaodsBadge }
+                    uplaodsBadge
                 }
         }
     }
@@ -506,8 +519,8 @@ private extension RecordingScreen {
         HStack {
             Spacer()
             Text("SS2")
-                .font(RAFont.medium.with(FontSize.tinyText))
-                .foregroundColor(Global.theme.tertiaryTextColor.color)
+                .font(RAFont.kuunariBold.with(FontSize.title4))
+                .foregroundColor(Color(hex: "FF8DDF"))
                 .frame(width: Constant.Size.controlButtonSize, height: Constant.Size.controlButtonSize)
                 .background(Constant.Colors.buttonsOpacity)
                 .clipShape(Circle())
@@ -526,7 +539,7 @@ private extension RecordingScreen {
     }
 
     var uplaodsBadge: some View {
-        Circle().fill(Color.red)
+        Circle().fill(Color(hex: "A30736"))
             .frame(width: 20, height: 20)
             .overlay(uplaodsBadgeText)
             .offset(x: 10, y: 20)
@@ -540,31 +553,51 @@ private extension RecordingScreen {
 
     var recordingTimer: some View {
         Text(formatTime(viewModel.recordingDuration))
-            .font(RAFont.medium.with(FontSize.body))
+            .font(RAFont.medium.with(FontSize.tinyText))
             .foregroundColor(.white)
-            .padding(.horizontal, Global.Margin.medium)
-            .padding(.vertical, Global.Margin.small)
+            .frame(width: 54, height: 32)
             .background(Constant.Colors.buttonsOpacity)
-            .cornerRadius(Global.CornerRadius.mid)
+            .cornerRadius(Global.CornerRadius.high)
     }
 
     var recordButton: some View {
         Button(action: viewModel.didTapRecord) {
             ZStack {
-                Circle()
-                    .fill(viewModel.isRecording ? Color.red : Color.red.opacity(0.3))
-                    .frame(width: Constant.Size.recordButtonSize, height: Constant.Size.recordButtonSize)
                 if !viewModel.isRecording {
+                    // Outer white ring with gap
                     Circle()
-                        .stroke(Color.red, lineWidth: 4)
-                        .frame(width: Constant.Size.recordButtonSize - 8, height: Constant.Size.recordButtonSize - 8)
+                        .fill(Color(hex: "B6113D").opacity(0.5))
+                        .stroke(Color(hex: "E95C74"), lineWidth: 1)
+                        .frame(width: Constant.Size.recordButtonSize, height: Constant.Size.recordButtonSize)
+
+                    // Inner solid red/pink filled circle
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [Color(hex: "E95C74"), Color(hex: "E13B5C")],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .frame(width: Constant.Size.recordButtonSize , height: Constant.Size.recordButtonSize - 16)
+                } else {
+                    // Solid red circle when recording
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [Color(hex: "E95C74"), Color(hex: "E13B5C")],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .frame(width: Constant.Size.recordButtonSize, height: Constant.Size.recordButtonSize)
                 }
             }
         }
     }
 
     var zoomControlsHorizontal: some View {
-        HStack(spacing: Global.Margin.small) {
+        HStack(spacing: Global.Margin.small * 2) {
             ForEach([1.0, 2.0, 5.0], id: \.self) { zoom in
                 zoomButton(zoom: zoom)
             }
@@ -574,8 +607,8 @@ private extension RecordingScreen {
     func zoomButton(zoom: CGFloat) -> some View {
         Button(action: { viewModel.didSelectZoom(zoom) }) {
             Text("\(Int(zoom))x")
-                .font(RAFont.medium.with(FontSize.tinyText))
-                .foregroundColor(viewModel.selectedZoom == zoom ? Color.yellow : Color.white)
+                .font(RAFont.sfProBold.with(FontSize.smallBody))
+                .foregroundColor(viewModel.selectedZoom == zoom ? Color(hex: "FFD551") : Color.white)
                 .frame(width: Constant.Size.zoomButtonSize, height: Constant.Size.zoomButtonSize)
                 .background(Constant.Colors.buttonsOpacity)
                 .clipShape(Circle())
@@ -584,12 +617,10 @@ private extension RecordingScreen {
 
     var settingsButton: some View {
         Button(action: viewModel.didTapSettings) {
-            HStack(spacing: 8) {
-                Image(systemName: "gearshape")
-                    .foregroundColor(.white)
-                    .font(.system(size: 14, weight: .regular))
+            HStack(spacing: 6) {
+                Image(.icGear)
                 Text("Settings")
-                    .font(RAFont.regular.with(FontSize.tinyText))
+                    .font(RAFont.sfProBold.with(FontSize.smallBody))
                     .foregroundColor(.white)
             }
             .padding(.horizontal, Global.Margin.small)
@@ -602,11 +633,10 @@ private extension RecordingScreen {
     var lensButton: some View {
         Button(action: { viewModel.didSelectLens("24mm") }) {
             HStack(spacing: 8) {
-                Image(systemName: "camera")
-                    .foregroundColor(.white)
-                    .font(.system(size: 14, weight: .regular))
+                Image(.icCamera)
+
                 Text(viewModel.selectedLens)
-                    .font(RAFont.regular.with(FontSize.tinyText))
+                    .font(RAFont.sfProBold.with(FontSize.smallBody))
                     .foregroundColor(.white)
             }
             .padding(.horizontal, Global.Margin.small)
@@ -617,26 +647,30 @@ private extension RecordingScreen {
     }
 
     private var portraitSaveAndUploadControls: some View {
-        HStack(spacing: Global.Margin.small) {
+        HStack(spacing: Global.Margin.xlarge) {
             uploadMediaButton
-            Divider()
-                .background(Color.white.opacity(0.3))
+            dividerPortrait
             saveToDeviceToggle
-            Divider()
-                .background(Color.white.opacity(0.3))
+            dividerPortrait
             liveButton
         }
         .frame(height: 50)
         .padding(.top, Global.Margin.medium)
-        .padding(.horizontal, Global.Margin.medium)
+        .padding(.horizontal, Global.Margin.large)
         .background(.black)
+    }
+
+    private var dividerPortrait: some View {
+        Divider()
+            .frame(height: 40)
+            .background(Color.white.opacity(0.3))
     }
 
     private var uploadMediaButton: some View {
         Button(action: viewModel.didTapUpload) {
-            VStack(spacing: 8) {
+            VStack(spacing: 10) {
                 Text("Upload Media")
-                    .font(RAFont.bold.with(FontSize.tinyText))
+                    .font(RAFont.kuunariBold.with(FontSize.body))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .lineLimit(nil)
@@ -647,16 +681,17 @@ private extension RecordingScreen {
     }
 
     private var saveToDeviceToggle: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 8) {
             Text("Save to Device")
-                .font(RAFont.bold.with(FontSize.smallBody))
-                .foregroundColor(Global.theme.secondaryButtonTextColor.color)
+                .font(RAFont.kuunariBold.with(FontSize.body))
+                .foregroundColor(Color(hex: "737373"))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, Global.Margin.xsmall)
             HStack(alignment: .center) {
-                Spacer()
                 Toggle("", isOn: $viewModel.autoSaveToDevice)
                     .toggleStyle(SwitchToggleStyle(tint: .purple))
+                Spacer()
                 Spacer()
             }
         }
@@ -670,8 +705,7 @@ private extension RecordingScreen {
                 Image(.icLive)
             }
             .frame(height: Constant.Size.liveButtonSize)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, viewModel.orientation.isPortrait ? Global.Margin.xxlarge : Global.Margin.small)
+            .padding(.horizontal, viewModel.orientation.isPortrait ? Global.Margin.medium : Global.Margin.small)
             .background(Constant.Colors.liveColor)
             .cornerRadius(Global.CornerRadius.extraHigh)
         }

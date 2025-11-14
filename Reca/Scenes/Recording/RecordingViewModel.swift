@@ -28,6 +28,8 @@ final class RecordingViewModel: BaseViewModel {
     
     // Orientation
     @Published var orientation = UIDeviceOrientation.unknown
+    @Published var isOrientationLocked = false
+    private var lockedOrientation: UIDeviceOrientation?
     
     // Recording State
     @Published var isRecording = false
@@ -189,7 +191,10 @@ extension RecordingViewModel {
             print("Missing camera or microphone permission")
             return
         }
-        
+
+        // Lock orientation to current orientation
+        lockOrientation()
+
         isRecording = true
         recordingDuration = 0
         startRecordingTimer()
@@ -211,8 +216,53 @@ extension RecordingViewModel {
         recordingTimer?.invalidate()
         recordingTimer = nil
         stopVideoRecording()
+
+        // Unlock orientation
+        unlockOrientation()
     }
     
+    // MARK: - Orientation Management
+
+    private func lockOrientation() {
+        print("📹 [RecordingViewModel] Locking orientation to: \(orientation)")
+        lockedOrientation = orientation
+        isOrientationLocked = true
+
+        // Lock device orientation at system level via AppDelegate
+        let orientationMask: UIInterfaceOrientationMask
+        switch orientation {
+        case .portrait:
+            orientationMask = .portrait
+        case .portraitUpsideDown:
+            orientationMask = .portraitUpsideDown
+        case .landscapeLeft:
+            orientationMask = .landscapeRight // Note: UIDevice and UIInterface are reversed
+        case .landscapeRight:
+            orientationMask = .landscapeLeft
+        default:
+            orientationMask = .portrait
+        }
+
+        // Update app-level orientation lock
+        AppDelegate.orientationLock = orientationMask
+
+        // Force orientation update
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: orientationMask))
+        }
+        UIViewController.attemptRotationToDeviceOrientation()
+    }
+
+    private func unlockOrientation() {
+        print("📹 [RecordingViewModel] Unlocking orientation")
+        isOrientationLocked = false
+        lockedOrientation = nil
+
+        // Restore all orientations
+        AppDelegate.orientationLock = .all
+        UIViewController.attemptRotationToDeviceOrientation()
+    }
+
     // MARK: - Camera Setup
     
     private func setupCamera() async {

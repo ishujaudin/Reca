@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SFPRODISPLAYBLACKITALIC</string>
 		<string>PlusJakartaSans-Bold.ttf</string>
 		<string>PlusJakartaSans-BoldItalic.ttf</string>
 		<string>PlusJakartaSans-ExtraBold.ttf</string>
@@ -18,12 +19,15 @@
 		<string>PlusJakartaSans-Regular.ttf</string>
 		<string>PlusJakartaSans-SemiBold.ttf</string>
 		<string>PlusJakartaSans-SemiBoldItalic.ttf</string>
+		<string>kuunari-bold.otf</string>
+		<string>SFPRODISPLAYBOLD.OTF</string>
+		<string>SFPRODISPLAYHEAVYITALIC.OTF</string>
+		<string>SFPRODISPLAYLIGHTITALIC.OTF</string>
+		<string>SFPRODISPLAYMEDIUM.OTF</string>
+		<string>SFPRODISPLAYREGULAR.OTF</string>
+		<string>SFPRODISPLAYSEMIBOLDITALIC.OTF</string>
+		<string>SFPRODISPLAYTHINITALIC.OTF</string>
+		<string>SFPRODISPLAYULTRALIGHTITALIC.OTF</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Reca needs access to your camera to record videos.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Reca needs access to your microphone to record audio with videos.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Reca needs access to save videos to your photo library.</string>
 </dict>
 </plist>

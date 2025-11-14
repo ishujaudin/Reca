@@ -25,6 +25,17 @@ enum RAFont {
     case lightItalic
     case italic
 
+    case kuunariBold
+    case sfProBlackItalic
+    case sfProBold
+    case sfProHeavyItalic
+    case sfProLightItalic
+    case sfProMedium
+    case sfProRegular
+    case sfProSemiBoldItalic
+    case sfProThinItalic
+    case sfProUltraLightItalic
+
     var fontName: String {
         switch self {
         case .regular:
@@ -39,6 +50,8 @@ enum RAFont {
             return "PlusJakartaSans-SemiBoldItalic"
         case .bold:
             return "PlusJakartaSans-Bold"
+        case .kuunariBold:
+            return "kuunari-bold"
         case .boldItalic:
             return "PlusJakartaSans-BoldItalic"
         case .extraBold:
@@ -55,6 +68,24 @@ enum RAFont {
             return "PlusJakartaSans-LightItalic"
         case .italic:
             return "PlusJakartaSans-Italic"
+        case .sfProBlackItalic:
+            return "SFPRODISPLAYBLACKITALIC"
+        case .sfProBold:
+            return "SFPRODISPLAYBOLD"
+        case .sfProHeavyItalic:
+            return "SFPRODISPLAYHEAVYITALIC"
+        case .sfProLightItalic:
+            return "SFPRODISPLAYLIGHTITALIC"
+        case .sfProMedium:
+            return "SFPRODISPLAYMEDIUM"
+        case .sfProRegular:
+            return "SFPRODISPLAYREGULAR"
+        case .sfProSemiBoldItalic:
+            return "SFPRODISPLAYSEMIBOLDITALIC"
+        case .sfProThinItalic:
+            return "SFPRODISPLAYTHINITALIC"
+        case .sfProUltraLightItalic:
+            return "SFPRODISPLAYULTRALIGHTITALIC"
         }
     }
 

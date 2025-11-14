@@ -18,7 +18,7 @@ private extension RecordingSettingsView {
             static let horizontalPadding: CGFloat = Global.Margin.large
             static let verticalPadding: CGFloat = Global.Margin.xlarge
             static let itemSpacing: CGFloat = Global.Margin.xlarge
-            static let sectionSpacing: CGFloat = Global.Margin.xxlarge
+            static let sectionSpacing: CGFloat = Global.Margin.xlarge
         }
     }
 }
@@ -32,23 +32,25 @@ struct RecordingSettingsView: View {
     var body: some View {
         mainContent
             .background(backgroundGradient)
-            .presentationDetents([.height(520)])
+            .presentationDetents([.height(450)])
             .presentationDragIndicator(.visible)
             .presentationCornerRadius(Global.CornerRadius.mediumHigh)
-            .presentationBackground(.thinMaterial)
-            .ignoresSafeArea()
+            .ignoresSafeArea(edges: .bottom)
     }
 
     private var mainContent: some View {
-        VStack {
-            settingsSheet
+        ScrollView {
+            VStack {
+                settingsSheet
+            }
+            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .scrollIndicators(.hidden)
     }
 
     private var backgroundGradient: some View {
         AppGradients.linear(colors: [Color(hex: "1F0E3E"), .black])
-            .opacity(0.4)
+            .opacity(0.9)
     }
 
     private var settingsSheet: some View {
@@ -63,16 +65,16 @@ struct RecordingSettingsView: View {
     }
 
     private var header: some View {
-        HStack {
+        HStack(spacing: 12) {
             Button(action: { dismiss() }) {
                 Image(systemName: "xmark")
                     .foregroundColor(.white)
                     .font(.system(size: 16, weight: .medium))
                     .frame(width: 40, height: 40)
-                    .background(Circle().fill(Color(hex: "2C1C4A")))
+                    .background(Circle().fill(Color(hex: "392A56")))
             }
             Text(Constant.title)
-                .font(RAFont.semiBold.with(FontSize.title4))
+                .font(RAFont.kuunariBold.with(FontSize.title1))
                 .foregroundColor(.white)
             Spacer()
         }
@@ -112,28 +114,31 @@ struct RecordingSettingsView: View {
     }
     
     private var defaultLensSetting: some View {
-        VStack(alignment: .leading, spacing: Global.Margin.small) {
+        VStack(alignment: .leading, spacing: 2) {
             Text("Default Camera Lens")
-                .font(RAFont.semiBold.with(FontSize.body))
+                .font(RAFont.kuunariBold.with(FontSize.title4))
                 .foregroundColor(.white)
             Text("Pick from your available camera lenses to be used as default")
-                .font(RAFont.regular.with(FontSize.footnote))
+                .font(RAFont.regular.with(FontSize.smallBody))
                 .foregroundColor(.white.opacity(0.7))
+                .fixedSize(horizontal: false, vertical: true)
 
-            HStack(spacing: Global.Margin.xsmall) {
+            HStack(spacing: Global.Margin.small) {
                 ForEach(["13mm", "24mm", "48mm", "77mm"], id: \.self) { lens in
                     lensButton(lens: lens)
                 }
             }
+            .padding(.top, Global.Margin.medium)
         }
     }
 
     func lensButton(lens: String) -> some View {
         Button(action: { viewModel.didSelectLens(lens) }) {
             Text(lens)
-                .font(RAFont.medium.with(FontSize.footnote))
+                .font(RAFont.kuunariBold.with(FontSize.body))
                 .foregroundColor(.white)
                 .padding(.horizontal, Global.Margin.large)
+                .padding(.vertical, Global.Margin.tiny)
                 .frame(height: 36)
                 .background(
                     RoundedRectangle(cornerRadius: 18)
@@ -151,18 +156,20 @@ private struct SettingRow: View {
     let title: String
     let subtitle: String
     @Binding var toggle: Bool
-    
+
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: Global.Margin.tiny) {
+        HStack(alignment: .top, spacing: Global.Margin.medium) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(RAFont.semiBold.with(FontSize.body))
+                    .font(RAFont.kuunariBold.with(FontSize.title4))
                     .foregroundColor(.white)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(subtitle)
-                    .font(RAFont.regular.with(FontSize.footnote))
+                    .font(RAFont.regular.with(FontSize.smallBody))
                     .foregroundColor(.white.opacity(0.7))
+                    .fixedSize(horizontal: false, vertical: true)
             }
-            Spacer()
+            Spacer(minLength: Global.Margin.small)
             Toggle("", isOn: $toggle)
                 .toggleStyle(SwitchToggleStyle(tint: .purple))
         }
